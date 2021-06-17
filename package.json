@@ -20,13 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint:fix": "eslint --fix --cache src/**/*.{js,jsx,ts,tsx}",
+    "format": "prettier --write src/**/*.{json,css,scss}"
   },
   "browserslist": {
     "production": [
@@ -38,6 +34,26 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{json,css,scss}": [
+      "yarn run format"
+    ],
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "yarn run lint:fix"
     ]
   }
 }
