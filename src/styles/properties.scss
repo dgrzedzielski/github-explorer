@@ -1,0 +1,16 @@
+:root {
+  --purple: hsla(248, 72%, 52%);
+  --black: hsl(214, 100%, 0%);
+  --gray-dark: hsla(0, 0%, 31%);
+  --gray: hsl(216, 6%, 52%);
+  --gray-light: hsl(0, 0%, 97%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-size-1: 1.7rem;
+  --font-size-2: 1.5rem;
+  --font-size-3: 1.4rem;
+  --font-size-4: 1.3rem;
+
+  --font-size-base: var(--font-size-3);
+  --font-family-base: 'Roboto', sans-serif;
+}
