@@ -1,0 +1,12 @@
+.base-input {
+  background: var(--input-bg);
+  border-radius: 8px;
+  border: none;
+  min-height: 36px;
+  padding: 10px 12px;
+  width: 100%;
+
+  &:focus {
+    outline-color: var(--primary);
+  }
+}

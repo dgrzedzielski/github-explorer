@@ -13,4 +13,11 @@
 
   --font-size-base: var(--font-size-3);
   --font-family-base: 'Roboto', sans-serif;
+
+  //theme default
+  --primary: var(--purple);
+  --text-color: var(--black);
+  --btn-color: var(--white);
+  --input-bg: var(--gray-light);
+  --panel-bg: var(--gray-light);
 }
