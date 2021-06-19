@@ -1,12 +1,22 @@
 import React from 'react';
-import { useSearchParam } from 'hooks/use-search-param';
+import { useUsersSearch } from 'hooks/use-users-search';
 
 function SearchResultsPage() {
-  const query = useSearchParam('query');
+  const { data, error } = useUsersSearch();
 
-  React.useEffect(() => {
-    console.log({ query });
-  }, [query]);
+  if (data) {
+    return (
+      <div>
+        {data.items.map((el) => (
+          <div>{el.login}</div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return <div>Use search input to search github users</div>;
 }

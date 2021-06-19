@@ -8,10 +8,16 @@ type FormSearchProps = {
   onSearch: (query: string) => void;
   label: string;
   placeholder?: string;
+  defaultQuery?: string | null;
 };
 
-export function FormSearch({ onSearch, label, placeholder }: FormSearchProps) {
-  const [query, setQuery] = React.useState('');
+export function FormSearch({
+  onSearch,
+  label,
+  placeholder,
+  defaultQuery,
+}: FormSearchProps) {
+  const [query, setQuery] = React.useState(() => defaultQuery ?? '');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
