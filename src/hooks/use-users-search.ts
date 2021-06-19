@@ -3,7 +3,7 @@ import { useFetch } from 'hooks/use-fetch';
 import { useSearchParam } from 'hooks/use-search-param';
 import { ListResponse, makeRequest } from 'utils/api-client';
 
-type User = {
+export type User = {
   login: string;
   id: number;
   node_id: string;

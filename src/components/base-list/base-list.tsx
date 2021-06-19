@@ -2,9 +2,9 @@ import React from 'react';
 import './base-list.scss';
 
 type CharactersListProps<TItem> = {
-  items: TItem[];
-  renderItem: (item: TItem) => React.ReactNode;
-  keyExtractor: (item: TItem) => string | number;
+  items: Readonly<TItem[]>;
+  renderItem: (item: Readonly<TItem>) => React.ReactNode;
+  keyExtractor: (item: Readonly<TItem>) => string | number;
 };
 
 export function BaseList<TItem extends Record<string, unknown>>({

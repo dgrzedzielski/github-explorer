@@ -1,0 +1,34 @@
+.user-profile {
+  padding-top: 12px;
+
+  &__avatar {
+    display: block;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    text-align: center;
+    font-size: var(--font-size-1);
+    margin-bottom: 32px;
+  }
+
+  &__bio {
+    font-size: var(--font-size-4);
+    color: var(--subtext-color);
+  }
+
+  &__heading {
+    font-size: var(--font-size-2);
+    margin-bottom: 14px;
+  }
+
+  &__repo {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 12px;
+    }
+  }
+}
