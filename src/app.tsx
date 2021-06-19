@@ -24,7 +24,7 @@ function App() {
       <Layout>
         <React.Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route path={routes.search} component={Homepage} />
+            <Route exact path={routes.search} component={Homepage} />
             <Route path={routes.profile} component={UserProfilePage} />
           </Switch>
         </React.Suspense>
