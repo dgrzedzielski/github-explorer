@@ -1,4 +1,4 @@
 export const routes = {
   search: '/',
-  profile: `/profile/:id`,
+  profile: `/profile/:slug`,
 };
