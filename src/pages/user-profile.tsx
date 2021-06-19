@@ -16,7 +16,13 @@ function UserProfilePage() {
   const error = userDetailsError || reposError;
 
   if (user && repos) {
-    return <UserProfile user={user} repos={repos} />;
+    const reposToDisplay = [...repos]
+      .sort((repoA, repoB) =>
+        repoA.stargazers_count > repoB.stargazers_count ? -1 : 1
+      )
+      .slice(0, 4);
+
+    return <UserProfile user={user} repos={reposToDisplay} />;
   }
 
   if (error) {
