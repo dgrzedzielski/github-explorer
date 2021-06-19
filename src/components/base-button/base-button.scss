@@ -4,4 +4,10 @@
   padding: 10px 24px;
   border: none;
   color: var(--btn-color);
+  cursor: pointer;
+  transition: 0.15s opacity;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
