@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BaseLoader } from 'components/base-loader';
 import { FormSearchUser } from 'components/form-search-user/form-search-user';
 import { PageHeader } from 'components/page-header';
 import { routes } from 'routes';
@@ -22,7 +23,7 @@ function App() {
   return (
     <Router>
       <Layout>
-        <React.Suspense fallback={<div>Loading...</div>}>
+        <React.Suspense fallback={<BaseLoader />}>
           <Switch>
             <Route exact path={routes.search} component={Homepage} />
             <Route path={routes.profile} component={UserProfilePage} />

@@ -1,11 +1,12 @@
 import React from 'react';
 import { BaseList } from 'components/base-list';
+import { BaseLoader } from 'components/base-loader';
 import { BlockLink } from 'components/block-link';
 import { useUsersSearch } from 'hooks/use-users-search';
 import { routes } from 'routes';
 
 function SearchResultsPage() {
-  const { data, error } = useUsersSearch();
+  const { data, error, status } = useUsersSearch();
 
   if (data) {
     return (
@@ -23,6 +24,10 @@ function SearchResultsPage() {
 
   if (error) {
     return <div>Error: {error.message}</div>;
+  }
+
+  if (status === 'pending') {
+    return <BaseLoader />;
   }
 
   return <div>Use search input to search github users</div>;
