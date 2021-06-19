@@ -1,0 +1,9 @@
+.base-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    margin-bottom: 4px;
+  }
+}
