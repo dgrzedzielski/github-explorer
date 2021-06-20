@@ -9,10 +9,9 @@ type AlertNotFoundProps = {
 export function AlertNotFound({ resource }: AlertNotFoundProps) {
   return (
     <div role="alert" className="alert-not-found">
-      <p>
-        We couldn't find anything like
-        <div>{resource}</div>
-      </p>
+      <div>
+        We couldn't find anything like <div>{resource}</div>
+      </div>
       <img src={noDataImage} alt="" />
     </div>
   );
