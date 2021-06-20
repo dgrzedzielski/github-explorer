@@ -12,16 +12,18 @@ type UserProfileProps = {
 };
 
 export function UserProfile({ user, repos }: UserProfileProps) {
+  const displayName = user.name ?? user.login;
+
   return (
     <div className="user-profile">
       <img
         src={user.avatar_url}
-        alt={`avatar of ${user.name}`}
+        alt={`avatar of ${displayName}`}
         className="user-profile__avatar"
         width={120}
         height={120}
       />
-      <h2 className="user-profile__name">{user.name ?? user.login}</h2>
+      <h2 className="user-profile__name">{displayName}</h2>
       <div>
         <h3 className="user-profile__heading">About</h3>
         <p className="user-profile__bio">{user.bio ?? ' - '}</p>
