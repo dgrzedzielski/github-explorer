@@ -8,13 +8,25 @@ import {
 } from '@testing-library/react';
 import { AppProviders } from 'app';
 
+type CustomRenderOptions = {
+  route?: string;
+};
+
 async function render<
   Q extends Queries = typeof queries,
   Container extends Element | DocumentFragment = HTMLElement
->(ui: React.ReactElement, options: RenderOptions<Q, Container> = {}) {
+>(
+  ui: React.ReactElement,
+  {
+    route = '/',
+    ...renderOptions
+  }: CustomRenderOptions & RenderOptions<Q, Container> = {}
+) {
+  window.history.pushState({}, 'Test page', route);
+
   const renderResult = baseRender<Q, Container>(ui, {
     wrapper: AppProviders as React.ComponentType,
-    ...options,
+    ...renderOptions,
   });
 
   await waitForLoadingToFinish();
