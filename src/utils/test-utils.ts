@@ -29,21 +29,22 @@ async function render<
     ...renderOptions,
   });
 
-  await waitForLoadingToFinish();
+  if (getLoaders().length > 0) {
+    await waitForLoadingToFinish();
+  }
 
   return renderResult;
 }
 
-export function waitForLoadingToFinish() {
-  return waitForElementToBeRemoved(
-    () => [
-      ...screen.queryAllByLabelText(/loading/i),
-      ...screen.queryAllByText(/loading/i),
-    ],
-    { timeout: 4000 }
-  );
+const getLoaders = () => [
+  ...screen.queryAllByLabelText(/loading/i),
+  ...screen.queryAllByText(/loading/i),
+];
+
+function waitForLoadingToFinish() {
+  return waitForElementToBeRemoved(() => getLoaders(), { timeout: 4000 });
 }
 
 export * from '@testing-library/react';
 export { default as userEvent } from '@testing-library/user-event';
-export { render };
+export { render, waitForLoadingToFinish };
