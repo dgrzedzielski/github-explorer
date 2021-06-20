@@ -51,16 +51,14 @@ export function useFetch<TData, TError = Error>(
         );
       }
       safeDispatch({ status: 'pending' });
-      return promise.then(
-        (data: TData) => {
+      return promise
+        .then((data: TData) => {
           setData(data);
           return data;
-        },
-        (error: TError) => {
+        })
+        .catch((error: TError) => {
           setError(error);
-          return Promise.reject(error);
-        }
-      );
+        });
     },
     [safeDispatch, setData, setError]
   );
