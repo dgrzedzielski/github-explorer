@@ -1,4 +1,5 @@
 import React from 'react';
+import { AlertError } from 'components/alert-error';
 import { AlertNotFound } from 'components/alert-not-found';
 import { BaseList } from 'components/base-list';
 import { BaseLoader } from 'components/base-loader';
@@ -30,7 +31,7 @@ function SearchResultsPage() {
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <AlertError>Error: {error.message}</AlertError>;
   }
 
   if (status === 'pending') {
