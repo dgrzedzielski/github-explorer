@@ -4,8 +4,12 @@ import { BaseLoader } from 'components/base-loader';
 import { DefaultLayout } from 'components/default-layout';
 import { routes } from 'routes';
 
-const Homepage = React.lazy(() => import('pages/search-results'));
-const UserProfilePage = React.lazy(() => import('pages/user-profile'));
+const Homepage = React.lazy(
+  () => import(/* webpackPrefetch: true */ 'pages/search-results')
+);
+const UserProfilePage = React.lazy(
+  () => import(/* webpackPrefetch: true */ 'pages/user-profile')
+);
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
