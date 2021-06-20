@@ -7,9 +7,13 @@ import { routes } from 'routes';
 const Homepage = React.lazy(() => import('pages/search-results'));
 const UserProfilePage = React.lazy(() => import('pages/user-profile'));
 
+export function AppProviders({ children }: { children: React.ReactNode }) {
+  return <Router>{children}</Router>;
+}
+
 function App() {
   return (
-    <Router>
+    <AppProviders>
       <DefaultLayout>
         <React.Suspense fallback={<BaseLoader />}>
           <Switch>
@@ -18,7 +22,7 @@ function App() {
           </Switch>
         </React.Suspense>
       </DefaultLayout>
-    </Router>
+    </AppProviders>
   );
 }
 
