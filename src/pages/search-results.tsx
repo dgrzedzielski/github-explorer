@@ -37,7 +37,7 @@ function SearchResultsPage() {
     return <BaseLoader />;
   }
 
-  return <div>Use search input to search github users</div>;
+  return <div role="alert">Use search input to search github users</div>;
 }
 
 export default SearchResultsPage;
