@@ -36,7 +36,7 @@ export function useUsersSearch() {
   const { run, ...state } = useFetch<ListResponse<User>>();
 
   React.useEffect(() => {
-    if (query && query.length >= 3) {
+    if (query) {
       run(searchUsers(query));
     }
   }, [run, query]);
