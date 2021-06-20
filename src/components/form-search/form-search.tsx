@@ -27,7 +27,7 @@ export function FormSearch({
   return (
     <form onSubmit={handleSubmit} className="form-search">
       <div className="form-search__input-container">
-        <SearchIcon className="form-search__icon" />
+        <SearchIcon className="form-search__icon" aria-hidden="true" />
         <BaseInput
           onChange={setQuery}
           value={query}
