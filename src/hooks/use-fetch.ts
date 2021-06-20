@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSafeDispatch } from 'hooks/use-safe-dispatch';
 
 type Status = 'idle' | 'pending' | 'success' | 'error';
 
@@ -31,13 +32,15 @@ export function useFetch<TData, TError = Error>(
     ) => State<TData, TError>
   >((state, action) => ({ ...state, ...action }), initialState);
 
+  const safeDispatch = useSafeDispatch(dispatch);
+
   const setData = React.useCallback(
-    (data: TData) => dispatch({ data, status: 'success', error: null }),
-    [dispatch]
+    (data: TData) => safeDispatch({ data, status: 'success', error: null }),
+    [safeDispatch]
   );
   const setError = React.useCallback(
-    (error: TError) => dispatch({ error, status: 'error', data: null }),
-    [dispatch]
+    (error: TError) => safeDispatch({ error, status: 'error', data: null }),
+    [safeDispatch]
   );
 
   const run = React.useCallback(
@@ -47,7 +50,7 @@ export function useFetch<TData, TError = Error>(
           'You need to pass promise as an argument to useFetch().run function.'
         );
       }
-      dispatch({ status: 'pending' });
+      safeDispatch({ status: 'pending' });
       return promise.then(
         (data: TData) => {
           setData(data);
@@ -59,7 +62,7 @@ export function useFetch<TData, TError = Error>(
         }
       );
     },
-    [dispatch, setData, setError]
+    [safeDispatch, setData, setError]
   );
 
   return {
