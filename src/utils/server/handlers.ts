@@ -24,13 +24,21 @@ export const handlers = [
     const { login } = req.params;
     const user = usersDb.readOne(login);
 
-    if (!user) return res(ctx.status(404, 'Not found'));
+    if (!user)
+      return res(
+        ctx.status(404, 'Not found'),
+        ctx.json({ message: 'Not Found' })
+      );
     return res(ctx.json(user));
   }),
 
   rest.get(`${API_URL}/users/:login/repos`, (req, res, ctx) => {
     const { login } = req.params;
-    if (!usersDb.readOne(login)) return res(ctx.status(404, 'Not found'));
+    if (!usersDb.readOne(login))
+      return res(
+        ctx.status(404, 'Not found'),
+        ctx.json({ message: 'Not Found' })
+      );
 
     const repos = reposDb.readAll();
     return res(ctx.json(repos));
