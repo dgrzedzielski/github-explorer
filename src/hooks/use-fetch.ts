@@ -18,6 +18,11 @@ type ActionType<TData, TError> =
   | ErrorAction<TError>
   | PendingAction;
 
+type UseFetchReducer<TData, TError> = (
+  state: State<TData, TError>,
+  action: ActionType<TData, TError>
+) => State<TData, TError>;
+
 export function useFetch<TData, TError = Error>(
   initialState: State<TData, TError> = {
     status: 'idle',
@@ -25,12 +30,10 @@ export function useFetch<TData, TError = Error>(
     error: null,
   }
 ) {
-  const [state, dispatch] = React.useReducer<
-    (
-      state: State<TData, TError>,
-      action: ActionType<TData, TError>
-    ) => State<TData, TError>
-  >((state, action) => ({ ...state, ...action }), initialState);
+  const [state, dispatch] = React.useReducer<UseFetchReducer<TData, TError>>(
+    (state, action) => ({ ...state, ...action }),
+    initialState
+  );
 
   const safeDispatch = useSafeDispatch(dispatch);
 
@@ -58,6 +61,7 @@ export function useFetch<TData, TError = Error>(
         })
         .catch((error: TError) => {
           setError(error);
+          return error;
         });
     },
     [safeDispatch, setData, setError]

@@ -5,29 +5,25 @@ import { DefaultLayout } from 'components/default-layout';
 import { routes } from 'routes';
 
 const Homepage = React.lazy(
-  () => import(/* webpackPrefetch: true */ 'pages/search-results')
+  () => import(/* webpackPrefetch: true */ 'pages/homepage')
 );
 const UserProfilePage = React.lazy(
   () => import(/* webpackPrefetch: true */ 'pages/user-profile')
 );
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
-  return (
-    <Router>
-      <DefaultLayout>{children}</DefaultLayout>
-    </Router>
-  );
+  return <Router>{children}</Router>;
 }
 
-function App() {
+export function App() {
   return (
     <React.Suspense fallback={<BaseLoader />}>
-      <Switch>
-        <Route exact path={routes.search} component={Homepage} />
-        <Route path={routes.profile} component={UserProfilePage} />
-      </Switch>
+      <DefaultLayout>
+        <Switch>
+          <Route exact path={routes.search} component={Homepage} />
+          <Route path={routes.profile} component={UserProfilePage} />
+        </Switch>
+      </DefaultLayout>
     </React.Suspense>
   );
 }
-
-export default App;

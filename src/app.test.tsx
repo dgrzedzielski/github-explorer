@@ -1,4 +1,4 @@
-import App from 'app';
+import { App } from 'app';
 import faker from 'faker';
 import { UserDetails } from 'hooks/use-user-details';
 import { routes } from 'routes';
@@ -80,7 +80,10 @@ it('should display user details and repos on profile page', async () => {
     buildRepo({ owner: user, stargazers_count: 0 }),
     buildRepo({ owner: user, stargazers_count: 10 }),
   ]);
-  await renderApp({ user, route: routes.profile.replace(':slug', user.login) });
+  await renderApp({
+    user,
+    route: routes.profile.replace(':login', user.login),
+  });
 
   expect(
     screen.getByRole('img', {
@@ -101,7 +104,7 @@ it('should display user details and repos on profile page', async () => {
 
 it('should show alert when non existing login will be provided as param', async () => {
   const username = faker.internet.userName();
-  await render(<App />, { route: routes.profile.replace(':slug', username) });
+  await render(<App />, { route: routes.profile.replace(':login', username) });
 
   expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot(
     `"Error: Not Found"`

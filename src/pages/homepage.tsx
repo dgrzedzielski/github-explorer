@@ -8,7 +8,7 @@ import { useSearchParam } from 'hooks/use-search-param';
 import { useUsersSearch } from 'hooks/use-users-search';
 import { routes } from 'routes';
 
-function SearchResultsPage() {
+function Homepage() {
   const userSearchQuery = useSearchParam('user');
   const { data, error, status } = useUsersSearch();
 
@@ -21,7 +21,7 @@ function SearchResultsPage() {
       <BaseList
         items={data.items}
         renderItem={({ login }) => (
-          <BlockLink to={routes.profile.replace(':slug', login)}>
+          <BlockLink to={routes.profile.replace(':login', login)}>
             {login}
           </BlockLink>
         )}
@@ -43,4 +43,4 @@ function SearchResultsPage() {
   );
 }
 
-export default SearchResultsPage;
+export default Homepage;

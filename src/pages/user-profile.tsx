@@ -7,11 +7,11 @@ import { useUserDetails } from 'hooks/use-user-details';
 import { useUserRepos } from 'hooks/use-user-repos';
 
 type UserProfileParams = {
-  slug: string;
+  login: string;
 };
 
 function UserProfilePage() {
-  const { slug: login } = useParams<UserProfileParams>();
+  const { login } = useParams<UserProfileParams>();
   const { user, error: userDetailsError } = useUserDetails(login);
   const { repos, error: reposError } = useUserRepos(login);
   const error = userDetailsError || reposError;
