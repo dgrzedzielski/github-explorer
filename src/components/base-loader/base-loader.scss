@@ -1,0 +1,48 @@
+.base-loader {
+  position: relative;
+  width: 60px;
+  height: 60px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    position: absolute;
+    top: calc(50% - 5px);
+
+    &:first-child {
+      left: 0;
+      animation: dot-jump 0.5s cubic-bezier(0.77, 0.47, 0.64, 0.28) alternate
+        infinite;
+    }
+
+    &:nth-child(2) {
+      left: 20px;
+      animation: dot-jump 0.5s 0.2s cubic-bezier(0.77, 0.47, 0.64, 0.28)
+        alternate infinite;
+    }
+
+    &:last-child {
+      left: 40px;
+      animation: dot-jump 0.5s 0.4s cubic-bezier(0.77, 0.47, 0.64, 0.28)
+        alternate infinite;
+    }
+  }
+}
+
+@keyframes dot-jump {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
