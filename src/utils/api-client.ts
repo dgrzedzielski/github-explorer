@@ -6,13 +6,13 @@ export type ListResponse<TItem> = {
 
 type ParamsType = Record<string, string>;
 
-type MakeRequestConfig = RequestInit & {
+type MakeRequestConfig = Omit<RequestInit, 'body'> & {
   body?: unknown;
   method?: 'GET' | 'POST' | 'DELETE' | 'PUT';
   params?: ParamsType;
 };
 
-const API_URL = process.env.REACT_APP_API_URL;
+export const API_URL = process.env.REACT_APP_API_URL;
 
 function getUrlWithParams(url: string, params?: ParamsType) {
   if (params) return url + '?' + new URLSearchParams(params).toString();
