@@ -11,7 +11,7 @@ type State<TData, TError = Error> = {
 
 type SuccessAction<TData> = { status: 'success'; data: TData; error: null };
 type ErrorAction<TError> = { status: 'error'; data: null; error: TError };
-type PendingAction = { status: Status };
+type PendingAction = { status: 'pending' };
 
 type ActionType<TData, TError> =
   | SuccessAction<TData>
