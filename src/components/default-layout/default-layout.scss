@@ -1,11 +1,26 @@
+@import 'styles/lib';
+
 .layout {
   &__header {
     padding: 32px 14px;
     box-shadow: 0 1px 10px rgba(#000, 0.05), 0 1px 0 rgba(#000, 0.05);
-    margin-bottom: 24px;
   }
 
   &__main {
-    padding: 0 14px 24px;
+    padding: 24px 14px;
+
+    @include mq(md) {
+      padding: 40px;
+    }
+
+    @include mq(lg) {
+      padding: 64px;
+    }
+  }
+
+  &__container {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

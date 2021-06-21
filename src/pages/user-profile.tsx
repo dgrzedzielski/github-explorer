@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { AlertError } from 'components/alert-error';
+import { BaseAlert } from 'components/base-alert';
 import { BaseLoader } from 'components/base-loader';
 import { UserProfile } from 'components/user-profile';
 import { useUserDetails } from 'hooks/use-user-details';
@@ -27,7 +27,7 @@ function UserProfilePage() {
   }
 
   if (error) {
-    return <AlertError>Error: {error.message}</AlertError>;
+    return <BaseAlert>Error: {error.message}</BaseAlert>;
   }
 
   return <BaseLoader />;

@@ -1,5 +1,6 @@
 :root {
-  --purple: hsla(248, 72%, 52%);
+  --purple: hsl(248, 72%, 52%);
+  --purple-overlay: hsl(248, 72%, 98%);
   --black: hsl(214, 100%, 0%);
   --gray-dark: hsla(0, 0%, 31%);
   --gray: hsl(216, 6%, 52%);
@@ -12,6 +13,13 @@
   --font-size-2: 1.5rem;
   --font-size-3: 1.4rem;
   --font-size-4: 1.3rem;
+
+  @include mq(md) {
+    --font-size-1: 1.8rem;
+    --font-size-2: 1.6rem;
+    --font-size-3: 1.5rem;
+    --font-size-4: 1.4rem;
+  }
 
   --font-size-base: var(--font-size-3);
   --font-family-base: 'Roboto', sans-serif;

@@ -1,0 +1,20 @@
+.base-alert {
+  padding: 16px;
+  border-left: 4px solid var(--alert-border-color, var(--alert-color));
+  background: var(--alert-bg);
+  color: var(--alert-color);
+  font-weight: 500;
+  border-radius: 0 6px 6px 0;
+  font-size: var(--font-size-2);
+
+  &--error {
+    --alert-bg: var(--red-overlay);
+    --alert-color: var(--red);
+  }
+
+  &--info {
+    --alert-bg: var(--purple-overlay);
+    --alert-border-color: var(--primary);
+    --alert-color: var(--text-color);
+  }
+}

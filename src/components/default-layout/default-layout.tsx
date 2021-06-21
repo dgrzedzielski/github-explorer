@@ -12,7 +12,9 @@ export function DefaultLayout({ children }: DefaultLayoutProps) {
       <header className="layout__header">
         <FormSearchUser />
       </header>
-      <main className="layout__main">{children}</main>
+      <main className="layout__main">
+        <div className="layout__container">{children}</div>
+      </main>
     </div>
   );
 }

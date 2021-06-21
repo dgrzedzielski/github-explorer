@@ -1,6 +1,6 @@
 import React from 'react';
-import { AlertError } from 'components/alert-error';
 import { AlertNotFound } from 'components/alert-not-found';
+import { BaseAlert } from 'components/base-alert';
 import { BaseList } from 'components/base-list';
 import { BaseLoader } from 'components/base-loader';
 import { BlockLink } from 'components/block-link';
@@ -31,14 +31,16 @@ function SearchResultsPage() {
   }
 
   if (error) {
-    return <AlertError>Error: {error.message}</AlertError>;
+    return <BaseAlert>Error: {error.message}</BaseAlert>;
   }
 
   if (status === 'pending') {
     return <BaseLoader />;
   }
 
-  return <div role="alert">Use search input to search github users</div>;
+  return (
+    <BaseAlert type="info">Use search input to search github users</BaseAlert>
+  );
 }
 
 export default SearchResultsPage;
