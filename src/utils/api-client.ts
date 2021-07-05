@@ -1,9 +1,3 @@
-export type ListResponse<TItem> = {
-  total_count: number;
-  incomplete_results: boolean;
-  items: Array<TItem>;
-};
-
 type ParamsType = Record<string, string>;
 
 type MakeRequestConfig = Omit<RequestInit, 'body'> & {

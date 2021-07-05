@@ -1,6 +1,12 @@
 import { useQuery } from 'react-query';
 import { useSearchParam } from 'hooks/use-search-param';
-import { ListResponse, makeRequest } from 'utils/api-client';
+import { makeRequest } from 'utils/api-client';
+
+export type ListResponse<TItem> = {
+  total_count: number;
+  incomplete_results: boolean;
+  items: Array<TItem>;
+};
 
 export type User = {
   login: string;
