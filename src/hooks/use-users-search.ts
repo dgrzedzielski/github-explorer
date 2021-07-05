@@ -1,5 +1,4 @@
-import React from 'react';
-import { useFetch } from 'hooks/use-fetch';
+import { useQuery } from 'react-query';
 import { useSearchParam } from 'hooks/use-search-param';
 import { ListResponse, makeRequest } from 'utils/api-client';
 
@@ -15,15 +14,15 @@ async function searchUsers(query: string) {
   });
 }
 
+const QUERY_KEY = (query: string) => ['search', 'users', query];
+
 export function useUsersSearch() {
   const query = useSearchParam('user');
-  const { run, ...state } = useFetch<ListResponse<User>>();
+  const enabled = !!query;
 
-  React.useEffect(() => {
-    if (query) {
-      run(searchUsers(query));
-    }
-  }, [run, query]);
-
-  return state;
+  return useQuery<ListResponse<User>, Error>(
+    QUERY_KEY(query!),
+    () => searchUsers(query!),
+    { enabled }
+  );
 }

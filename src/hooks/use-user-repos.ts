@@ -1,5 +1,4 @@
-import React from 'react';
-import { useFetch } from 'hooks/use-fetch';
+import { useQuery } from 'react-query';
 import { UserDetails } from 'hooks/use-user-details';
 import { makeRequest } from 'utils/api-client';
 
@@ -17,15 +16,10 @@ async function fetchUserRepos(login: string) {
   return makeRequest<Array<Repo>>(`users/${login}/repos`);
 }
 
+const QUERY_KEY = (login: string) => ['user', login, 'repos'];
+
 export function useUserRepos(login: string) {
-  const { run, ...state } = useFetch<Array<Repo>>();
-
-  React.useEffect(() => {
-    run(fetchUserRepos(login));
-  }, [run, login]);
-
-  return {
-    ...state,
-    repos: state.data,
-  };
+  return useQuery<Array<Repo>, Error>(QUERY_KEY(login), () =>
+    fetchUserRepos(login)
+  );
 }

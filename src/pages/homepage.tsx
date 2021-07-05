@@ -34,7 +34,7 @@ function Homepage() {
     return <BaseAlert>Error: {error.message}</BaseAlert>;
   }
 
-  if (status === 'pending') {
+  if (status === 'loading') {
     return <BaseLoader />;
   }
 

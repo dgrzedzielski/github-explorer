@@ -1,5 +1,4 @@
-import React from 'react';
-import { useFetch } from 'hooks/use-fetch';
+import { useQuery } from 'react-query';
 import { User } from 'hooks/use-users-search';
 import { makeRequest } from 'utils/api-client';
 
@@ -12,15 +11,12 @@ async function fetchUserDetails(login: string) {
   return makeRequest<UserDetails>(`users/${login}`);
 }
 
+const QUERY_KEY = (login: string) => ['users', login];
+
 export function useUserDetails(login: string) {
-  const { run, ...state } = useFetch<UserDetails>();
-
-  React.useEffect(() => {
-    run(fetchUserDetails(login));
-  }, [run, login]);
-
-  return {
-    ...state,
-    user: state.data,
-  };
+  return useQuery<UserDetails, Error>(
+    QUERY_KEY(login),
+    () => fetchUserDetails(login),
+    { retry: false }
+  );
 }

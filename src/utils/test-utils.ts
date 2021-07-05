@@ -6,7 +6,7 @@ import {
   waitForElementToBeRemoved,
   RenderOptions,
 } from '@testing-library/react';
-import { AppProviders } from 'app';
+import { AppProviders } from 'app-providers';
 
 type CustomRenderOptions = {
   route?: string;

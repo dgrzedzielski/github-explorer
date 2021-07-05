@@ -12,8 +12,8 @@ type UserProfileParams = {
 
 function UserProfilePage() {
   const { login } = useParams<UserProfileParams>();
-  const { user, error: userDetailsError } = useUserDetails(login);
-  const { repos, error: reposError } = useUserRepos(login);
+  const { data: user, error: userDetailsError } = useUserDetails(login);
+  const { data: repos, error: reposError } = useUserRepos(login);
   const error = userDetailsError || reposError;
 
   if (user && repos) {
